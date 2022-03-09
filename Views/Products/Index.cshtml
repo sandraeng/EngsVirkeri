@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EngsVirkeri.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" type="button" class="btn btn-secondary">Create New</a>
+</p>
+
+<div class="card-columns">
+    @foreach(var item in Model)
+    {
+        <div class="card">
+            <div class="card-img" style="background-image: url('@Url.Content(item.Image)')"></div>
+            <div class="card-body">
+            <h4 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h4>
+            <p class="card-text">@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(modelItem => item.Description)</p>
+            <p class="card-text">@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(modelItem => item.Price)</p>
+            <p class="card-text">@Html.DisplayNameFor(model => model.InStock): @Html.DisplayFor(modelItem => item.InStock)</p>
+                <div class="card-footer">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+                
+           
