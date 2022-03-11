@@ -4,14 +4,16 @@ using EngsVirkeri.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EngsVirkeri.Migrations
 {
     [DbContext(typeof(EngsVirkeriContext))]
-    partial class EngsVirkeriContextModelSnapshot : ModelSnapshot
+    [Migration("20220309131424_extenduser")]
+    partial class extenduser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

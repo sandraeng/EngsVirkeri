@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EngsVirkeri.Data
 {
-    public class EngsVirkeriContext : IdentityDbContext
+    public class EngsVirkeriContext : IdentityDbContext<ApplicationUser>
     {
         public EngsVirkeriContext (DbContextOptions<EngsVirkeriContext> options)
             : base(options)

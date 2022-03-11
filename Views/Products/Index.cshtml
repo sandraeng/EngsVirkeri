@@ -1,29 +1,39 @@
 ﻿@model IEnumerable<EngsVirkeri.Models.Product>
+@inject SignInManager<ApplicationUser> signInManager
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create" type="button" class="btn btn-secondary">Create New</a>
-</p>
+<h1 class="text-center">Våra produkter</h1>
+@if(signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" type="button" class="btn btn-secondary justify-content-center">Create New</a>
+    </p>
+}
 
 <div class="card-columns">
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
-        <div class="card">
+        <div class="card products">
             <div class="card-img" style="background-image: url('@Url.Content(item.Image)')"></div>
             <div class="card-body">
-            <h4 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h4>
-            <p class="card-text">@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(modelItem => item.Description)</p>
-            <p class="card-text">@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(modelItem => item.Price)</p>
-            <p class="card-text">@Html.DisplayNameFor(model => model.InStock): @Html.DisplayFor(modelItem => item.InStock)</p>
+                <h4 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h4>
+                <p class="card-text">@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(modelItem => item.Description)</p>
+                <p class="card-text">@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(modelItem => item.Price)</p>
+                <p class="card-text">@Html.DisplayNameFor(model => model.InStock): @Html.DisplayFor(modelItem => item.InStock)</p>
                 <div class="card-footer">
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if(signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-primary pr-2" asp-action="Edit" asp-route-id="@item.Id">Ändra</a>
+                        <a class="btn btn-success pr-2" asp-action="Details" asp-route-id="@item.Id">Detaljer</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detaljer</a>
+                    }
                 </div>
             </div>
         </div>
@@ -31,5 +41,5 @@
 </div>
 
 
-                
-           
+
+

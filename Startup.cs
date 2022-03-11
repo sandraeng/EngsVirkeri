@@ -13,6 +13,7 @@ using EngsVirkeri.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using EngsVirkeri.Models;
 
 namespace EngsVirkeri
 {
@@ -30,7 +31,7 @@ namespace EngsVirkeri
         {
             services.AddControllersWithViews();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;

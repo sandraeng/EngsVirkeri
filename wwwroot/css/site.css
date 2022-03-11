@@ -3,12 +3,26 @@ for details on configuring this project to bundle and minify static web assets. 
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+.bg-navbar {
+    background: linear-gradient(50deg, #04f193 0%, #02b76f 25%, #018953 50%, #015433 75%, #012c1b 100%);
+}
+.navbar{
+    padding: 0;
+}
+.navbar-brand {
+    color: #141414;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
-
+.nav-link{
+    color: #141414;
+}
+.nav-link:hover {
+    color: #fff;
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -66,12 +80,16 @@ body {
     align-items: center;
 }
 
-.card {
+.products {
     width: 70%;
     height: 550px;
     margin: 20px 10px;
 }
-
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .card-img {
     height: 250px;
     background:center;
@@ -82,24 +100,71 @@ body {
     background-color: transparent;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    color: #141414ba;
+    background: linear-gradient(50deg, #04f193 0%, #02b76f 25%, #018953 50%, #015433 75%, #012c1b 100%);
 }
-.registration-form, .login-form{
-    width: 70%;
-    border: 1px solid black;
-    border-radius: 15px;
-}
-.registration-form .form-group, button{
-    margin: 20px;
-}
+
 .login-form .form-group, button {
     margin: 20px;
 }
+.login-logout-tab .card-header {
+    padding: 0 0 10px 0;
+}
 
+.login-logout-tab .nav-tabs {
+    margin: 0 0 -10px 0;
+}
+
+.login-logout-tab .nav-link {
+    font-size: 20px;
+    color: #2e0466;
+    text-align: center;
+    font-weight: 500;
+}
+
+.card-content {
+    padding: 10px 20px;
+}
+
+.login-form-icon {
+    text-align: center;
+}
+.auth-row{
+    justify-content:center;
+    margin-top: 10%;
+}
+.auth-form-container{
+    width: 500px;
+}
+.card{
+    width: 100%;
+}
+.role-card {
+    width: 500px;
+}
+.nav-link {
+    padding: 0.5rem 3rem;
+    margin-left: 10px
+}
+.nav-tabs {
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.card-content h1, h4 {
+    text-align: center;
+    font-weight: 600;
+    color: #3e028dc7;
+}
+
+.bi-person-circle {
+    font-size: 8rem;
+    color: #3e028dc7;
+}
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -111,15 +176,11 @@ body {
         padding: 10px 0px;
     }
 
-    .form-group {
-        margin-right: 15px;
-    }
-
     .btn-info {
         align-self: flex-end;
     }
 
-    .card {
+    .products {
         width: 400px;
     }
 
