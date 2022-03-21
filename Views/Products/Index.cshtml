@@ -8,8 +8,8 @@
 <h1 class="text-center">Våra produkter</h1>
 @if(signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
 {
-    <p>
-        <a asp-action="Create" type="button" class="btn btn-secondary justify-content-center">Create New</a>
+    <p class="text-center">
+        <a asp-action="Create" type="button" class="btn btn-secondary">Create New</a>
     </p>
 }
 
