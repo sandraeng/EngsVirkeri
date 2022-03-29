@@ -1,0 +1,43 @@
+﻿@model EngsVirkeri.Models.Product
+@inject EngsVirkeriContext context
+
+@{
+    ViewData["Title"] = "EditImages";
+}
+
+<h1>EditImages</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeleteImage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Image" />
+            @foreach (var image in context.Images)
+                {
+                    @if(image.ProductId == Model.Id)
+                    {
+                        @*<div class="card-img" style="background-image: url('@Url.Content(context.Images.FirstOrDefault(i => i.Product.Id == item.Id).Path)')"></div>*@
+                        <div class="card-img" style="background-image: url('@Url.Content(image.Path)'); width:350px;"></div>
+
+                        <form asp-action="DeleteImage">
+                            <input type="hidden" asp-for="@image.Id"/>
+                            <input type="submit" value="Delete" class="btn btn-danger pt-3" /> |
+                            <a asp-action="Index">Back to List</a>
+                        </form>
+                        
+                    }
+                }
+        </form>
+            
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

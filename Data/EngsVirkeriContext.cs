@@ -15,6 +15,8 @@ namespace EngsVirkeri.Data
         {
         }
 
-        public DbSet<EngsVirkeri.Models.Product> Product { get; set; }
+        public DbSet<EngsVirkeri.Models.Product> Products { get; set; }
+        public DbSet<EngsVirkeri.Models.Image> Images { get; set; }
+
     }
 }

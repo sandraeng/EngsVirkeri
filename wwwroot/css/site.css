@@ -183,7 +183,9 @@ label{
     font-weight: 600;
     color: #3e028dc7;
 }
-
+.form-control{
+    width: 300px;
+}
 .bi-person-circle {
     font-size: 8rem;
     color: #3e028dc7;

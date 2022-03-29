@@ -1,4 +1,5 @@
 ﻿@model EngsVirkeri.Models.Product
+@inject EngsVirkeriContext context
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,12 +11,15 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
+                <a asp-action="DeleteImage" asp-route-id="@Model.Id">Ta bort befintlig bild</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label">Lägg till bilder</label>
+                <input type="file" name="files" class="form-control" multiple/>
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EngsVirkeri.Controllers
 {
-    [Authorize(Roles = ("Admin"))]
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
