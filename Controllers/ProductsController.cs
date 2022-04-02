@@ -13,7 +13,6 @@ using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore;
-using EngsVirkeri.ViewModel;
 using static System.Net.WebRequestMethods;
 
 namespace EngsVirkeri.Controllers
@@ -121,7 +120,7 @@ namespace EngsVirkeri.Controllers
             }
 
             var product = await _context.Products.FindAsync(id);
-            var images = _context.Images.Where(i => i.ProductId == id);
+            //var images = _context.Images.Where(i => i.ProductId == id);
 
             if (product == null)
             {

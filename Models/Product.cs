@@ -24,13 +24,13 @@ namespace EngsVirkeri.Models
         [Display(Name ="I Lager")]
         public int InStock { get; set; }
 
-        public string ImagePath
-        {
-            get
-            {
-                return @"C:\CodeSkola\ASP.NET-MVC\EngsVirkeri\wwwroot\Images\DSC_0952.JPG";
-            }
+        //public string ImagePath
+        //{
+        //    get
+        //    {
+        //        return @"C:\CodeSkola\ASP.NET-MVC\EngsVirkeri\wwwroot\Images\DSC_0952.JPG";
+        //    }
 
-        }
+        //}
     }
 }
