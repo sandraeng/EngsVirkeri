@@ -1,5 +1,7 @@
 ﻿using EngsVirkeri.Data;
 using EngsVirkeri.Models;
+using EngsVirkeri.ViewModels;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

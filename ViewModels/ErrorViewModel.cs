@@ -1,6 +1,6 @@
 using System;
 
-namespace EngsVirkeri.Models
+namespace EngsVirkeri.ViewModels
 {
     public class ErrorViewModel
     {

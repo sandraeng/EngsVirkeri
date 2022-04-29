@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore;
 using static System.Net.WebRequestMethods;
+using EngsVirkeri.Interfaces;
 
 namespace EngsVirkeri.Controllers
 {
@@ -21,12 +22,14 @@ namespace EngsVirkeri.Controllers
     public class ProductsController : Controller
     {
         private readonly EngsVirkeriContext _context;
-        private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IProductRepository _productRepo;
 
-        public ProductsController(EngsVirkeriContext context, IWebHostEnvironment webHostEnvironment)
+        public ProductsController(EngsVirkeriContext context, IWebHostEnvironment webHostEnvironment, IProductRepository productRepo)
         {
             _context = context;
-            this.webHostEnvironment = webHostEnvironment;
+            _webHostEnvironment = webHostEnvironment;
+            _productRepo = productRepo;
         }
 
         // GET: Products
@@ -34,7 +37,7 @@ namespace EngsVirkeri.Controllers
         public async Task<IActionResult> Index()
         {
             
-            return View(await _context.Products.ToListAsync());
+            return View(await _productRepo.ListAllProductsAsync());
         }
         
         // GET: Products/Details/5
@@ -45,9 +48,7 @@ namespace EngsVirkeri.Controllers
             {
                 return NotFound();
             }
-
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var product = await _productRepo.GetProductAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -100,7 +101,7 @@ namespace EngsVirkeri.Controllers
             string fileName = null;
             if (file != null)
             {
-                string uploadDir = Path.Combine(webHostEnvironment.WebRootPath, "Images");
+                string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
                 fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
                 string filePath = Path.Combine(uploadDir, fileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -233,8 +234,8 @@ namespace EngsVirkeri.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
+            _productRepo.DeleteProduct(id);
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

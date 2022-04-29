@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace EngsVirkeri.Models
+namespace EngsVirkeri.ViewModels
 {
     public class RegisterViewModel
     {
